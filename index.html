@@ -2849,6 +2849,84 @@
 
   </script>
   <script>
+    (function () {
+      'use strict';
+      var category = 'Culture';
+      var articleUrl = '/blog/atif-aslam-karachi-event-subah-aye-na/';
+
+      function addBlogPost() {
+        var filter = document.getElementById('blog-filter');
+        var grid = document.getElementById('blog-grid');
+        if (!filter || !grid) return;
+
+        var selected = filter.querySelector('.chip[aria-pressed="true"]');
+        var activeCategory = selected ? selected.getAttribute('data-cat') : 'All';
+        var post = grid.querySelector('[data-campusbuzz-atif-post]');
+        if (activeCategory !== 'All' && activeCategory !== category) {
+          if (post) post.remove();
+          return;
+        }
+        if (post) return;
+
+        post = document.createElement('article');
+        post.className = 'card blog-card';
+        post.setAttribute('data-campusbuzz-atif-post', '');
+        post.innerHTML =
+          '<img class="blog-card__img" src="/assets/img/atif-aslam-subah-aye-na-featured.png" alt="Atif Aslam singing onstage at the Subah Aye Na concert in Karachi, 2026, with the concert title beside him." loading="lazy" width="1365" height="768">' +
+          '<div class="event__tags" style="margin:1rem 0 .6rem"><span class="badge badge--lime">CULTURE</span><span class="badge">RECAP</span></div>' +
+          '<h3>Atif Aslam Karachi Event 2026: Subah Aye Na Celebration Highlights</h3>' +
+          '<p class="muted" style="font-size:.9375rem">A recap of Atif Aslam’s live performance, the Subah Aye Na celebration, special appearances and Spotify fan moment in Karachi.</p>' +
+          '<p class="muted" style="font-size:.8125rem">Published 12 Nov 2026</p>' +
+          '<a class="btn btn--sm btn--ghost" href="' + articleUrl + '">Read the story</a>';
+        grid.appendChild(post);
+      }
+
+      new MutationObserver(addBlogPost).observe(document.documentElement, {
+        childList: true,
+        subtree: true
+      });
+    })();
+  </script>
+  <script>
+    (function () {
+      'use strict';
+      var category = 'Tech';
+      var articleUrl = '/blog/alibaba-cloud-ai-hackathon-pakistan-2026/';
+
+      function addBlogPost() {
+        var filter = document.getElementById('blog-filter');
+        var grid = document.getElementById('blog-grid');
+        if (!filter || !grid) return;
+
+        var selected = filter.querySelector('.chip[aria-pressed="true"]');
+        var activeCategory = selected ? selected.getAttribute('data-cat') : 'All';
+        var post = grid.querySelector('[data-campusbuzz-alibaba-post]');
+        if (activeCategory !== 'All' && activeCategory !== category) {
+          if (post) post.remove();
+          return;
+        }
+        if (post) return;
+
+        post = document.createElement('article');
+        post.className = 'card blog-card';
+        post.setAttribute('data-campusbuzz-alibaba-post', '');
+        post.innerHTML =
+          '<img class="blog-card__img" src="/assets/img/alibaba-cloud-ai-hackathon-pakistan-2026.jpg" alt="Young Pakistani innovators presenting AI projects at the Alibaba Cloud AI Hackathon Pakistan 2026 grand finale." loading="lazy" width="400" height="500">' +
+          '<div class="event__tags" style="margin:1rem 0 .6rem"><span class="badge badge--lime">TECH</span><span class="badge">RECAP</span></div>' +
+          '<h3>Alibaba Cloud AI Hackathon Pakistan 2026: Grand Finale, Winners &amp; Highlights</h3>' +
+          '<p class="muted" style="font-size:.9375rem">Explore the grand finale with 749 finalists, 300 AI projects and student teams behind the winning innovations.</p>' +
+          '<p class="muted" style="font-size:.8125rem">Published 12 Nov 2026</p>' +
+          '<a class="btn btn--sm btn--ghost" href="' + articleUrl + '">Read the story</a>';
+        grid.appendChild(post);
+      }
+
+      new MutationObserver(addBlogPost).observe(document.documentElement, {
+        childList: true,
+        subtree: true
+      });
+    })();
+  </script>
+  <script>
 
     (function () {
       'use strict';

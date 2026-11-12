@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title description">
+  <title id="title">Illustrative concert stage lights</title>
+  <desc id="description">Abstract lime and pink spotlights illuminate a stage silhouette against a dark background.</desc>
+  <defs>
+    <linearGradient id="background" x2="0" y2="1">
+      <stop stop-color="#272727"/>
+      <stop offset="1" stop-color="#171717"/>
+    </linearGradient>
+    <linearGradient id="beam-pink" x2="0" y2="1">
+      <stop stop-color="#ff2e93" stop-opacity=".8"/>
+      <stop offset="1" stop-color="#ff2e93" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="beam-lime" x2="0" y2="1">
+      <stop stop-color="#d7ff00" stop-opacity=".75"/>
+      <stop offset="1" stop-color="#d7ff00" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#background)"/>
+  <path d="M170 40 430 500H80z" fill="url(#beam-lime)"/>
+  <path d="m1030 35-270 465h360z" fill="url(#beam-pink)"/>
+  <path d="m600 25 180 480H420z" fill="#d7ff00" opacity=".12"/>
+  <path d="M0 500h1200v175H0z" fill="#0f0f0f"/>
+  <path d="M145 500h910v38H145z" fill="#d7ff00"/>
+  <path d="M195 538v66m810-66v66" stroke="#d7ff00" stroke-width="16"/>
+  <g fill="#171717">
+    <path d="M145 675v-75q0-26 24-26t24 26v75zm65 0v-91q0-29 26-29t26 29v91zm79 0v-66q0-24 23-24t23 24v66zm67 0v-100q0-31 28-31t28 31v100zm82 0v-74q0-25 24-25t24 25v74zm90 0v-111q0-32 28-32t28 32v111zm85 0v-73q0-24 23-24t23 24v73zm67 0v-98q0-30 27-30t27 30v98zm81 0v-72q0-24 23-24t23 24v72zm67 0v-103q0-32 28-32t28 32v103z"/>
+  </g>
+  <g fill="#ffffff" opacity=".75">
+    <circle cx="170" cy="93" r="8"/><circle cx="600" cy="78" r="8"/><circle cx="1030" cy="92" r="8"/>
+  </g>
+</svg>
