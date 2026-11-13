@@ -1,0 +1,11 @@
+{
+  "rewrites": [
+    { "source": "/teaser.html", "destination": "/index.html" },
+    { "source": "/events.html", "destination": "/index.html" },
+    { "source": "/passes.html", "destination": "/index.html" },
+    { "source": "/summary.html", "destination": "/index.html" },
+    { "source": "/payment.html", "destination": "/index.html" },
+    { "source": "/confirmation.html", "destination": "/index.html" },
+    { "source": "/blog.html", "destination": "/index.html" }
+  ]
+}

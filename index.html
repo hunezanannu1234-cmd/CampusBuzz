@@ -1357,7 +1357,8 @@
     /* Journey strip on home */
     .journey {
       display: grid;
-      gap: var(--sp-3);
+      column-gap: var(--sp-3);
+      row-gap: var(--sp-5);
       grid-template-columns: repeat(4, minmax(0, 1fr));
       list-style: none;
       padding: 0;
@@ -1392,7 +1393,7 @@
     }
 
     .stat {
-      text-align: center;
+      text-align: left;
       padding: var(--sp-4);
       border: 2px solid var(--line-strong);
       border-radius: var(--radius);
@@ -2202,6 +2203,17 @@
 
     .headline-cta {
       margin-top: var(--sp-5);
+      text-align: left;
+    }
+
+    .stats-heading {
+      margin: 2.5rem 0 var(--sp-4);
+    }
+
+    section[aria-labelledby="gallery-title"] .row--between {
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: var(--sp-5);
     }
 
     .blog-card {
@@ -2738,9 +2750,20 @@
           var exploreLink = section && section.querySelector('.row--between > a[href="events.html"]');
           if (eventGrid && exploreLink) {
             var cta = document.createElement('div');
-            cta.className = 'headline-cta center';
+            cta.className = 'headline-cta';
             cta.appendChild(exploreLink);
             eventGrid.after(cta);
+          }
+          var stats = section && section.querySelector('#stats');
+          if (stats) {
+            var statsHeading = document.createElement('h3');
+            statsHeading.id = 'stats-title';
+            statsHeading.className = 'stats-heading';
+            statsHeading.textContent = 'The Festival in Numbers';
+            stats.parentNode.insertBefore(statsHeading, stats);
+            stats.style.marginTop = '0';
+            stats.setAttribute('role', 'group');
+            stats.setAttribute('aria-labelledby', statsHeading.id);
           }
         }
 
@@ -2852,7 +2875,7 @@
     (function () {
       'use strict';
       var category = 'Culture';
-      var articleUrl = '/blog/atif-aslam-karachi-event-subah-aye-na/';
+      var articleUrl = 'blog/atif-aslam-karachi-event-subah-aye-na/index.html';
 
       function addBlogPost() {
         var filter = document.getElementById('blog-filter');
@@ -2872,12 +2895,12 @@
         post.className = 'card blog-card';
         post.setAttribute('data-campusbuzz-atif-post', '');
         post.innerHTML =
-          '<img class="blog-card__img" src="/assets/img/atif-aslam-subah-aye-na-featured.png" alt="Atif Aslam singing onstage at the Subah Aye Na concert in Karachi, 2026, with the concert title beside him." loading="lazy" width="1365" height="768">' +
+          '<img class="blog-card__img" src="assets/img/atif-aslam-subah-aye-na-featured.png" alt="Atif Aslam singing onstage at the Subah Aye Na concert in Karachi, 2026, with the concert title beside him." loading="lazy" width="1365" height="768">' +
           '<div class="event__tags" style="margin:1rem 0 .6rem"><span class="badge badge--lime">CULTURE</span><span class="badge">RECAP</span></div>' +
           '<h3>Atif Aslam Karachi Event 2026: Subah Aye Na Celebration Highlights</h3>' +
           '<p class="muted" style="font-size:.9375rem">A recap of Atif Aslam’s live performance, the Subah Aye Na celebration, special appearances and Spotify fan moment in Karachi.</p>' +
           '<p class="muted" style="font-size:.8125rem">Published 12 Nov 2026</p>' +
-          '<a class="btn btn--sm btn--ghost" href="' + articleUrl + '">Read the story</a>';
+          '<a class="btn btn--sm btn--ghost" href="' + articleUrl + '" data-native-nav>Read the story</a>';
         grid.appendChild(post);
       }
 
@@ -2891,7 +2914,7 @@
     (function () {
       'use strict';
       var category = 'Tech';
-      var articleUrl = '/blog/alibaba-cloud-ai-hackathon-pakistan-2026/';
+      var articleUrl = 'blog/alibaba-cloud-ai-hackathon-pakistan-2026/index.html';
 
       function addBlogPost() {
         var filter = document.getElementById('blog-filter');
@@ -2911,12 +2934,12 @@
         post.className = 'card blog-card';
         post.setAttribute('data-campusbuzz-alibaba-post', '');
         post.innerHTML =
-          '<img class="blog-card__img" src="/assets/img/alibaba-cloud-ai-hackathon-pakistan-2026.jpg" alt="Young Pakistani innovators presenting AI projects at the Alibaba Cloud AI Hackathon Pakistan 2026 grand finale." loading="lazy" width="400" height="500">' +
+          '<img class="blog-card__img" src="assets/img/alibaba-cloud-ai-hackathon-pakistan-2026.jpg" alt="Young Pakistani innovators presenting AI projects at the Alibaba Cloud AI Hackathon Pakistan 2026 grand finale." loading="lazy" width="400" height="500">' +
           '<div class="event__tags" style="margin:1rem 0 .6rem"><span class="badge badge--lime">TECH</span><span class="badge">RECAP</span></div>' +
           '<h3>Alibaba Cloud AI Hackathon Pakistan 2026: Grand Finale, Winners &amp; Highlights</h3>' +
           '<p class="muted" style="font-size:.9375rem">Explore the grand finale with 749 finalists, 300 AI projects and student teams behind the winning innovations.</p>' +
           '<p class="muted" style="font-size:.8125rem">Published 12 Nov 2026</p>' +
-          '<a class="btn btn--sm btn--ghost" href="' + articleUrl + '">Read the story</a>';
+          '<a class="btn btn--sm btn--ghost" href="' + articleUrl + '" data-native-nav>Read the story</a>';
         grid.appendChild(post);
       }
 
@@ -2997,6 +3020,7 @@
 
       document.addEventListener('click', function (e) {
         var a = e.target.closest && e.target.closest('a[href]'); if (!a) return;
+        if (a.hasAttribute('data-native-nav')) return;
         var h = a.getAttribute('href');
         if (h.charAt(0) === '#') {
           e.preventDefault();
@@ -3007,7 +3031,12 @@
         if (/\.html/.test(h)) { e.preventDefault(); navigate(h); }
       });
 
-      document.addEventListener('DOMContentLoaded', function () { var m = location.hash.match(/^#go-([\w.]+\.html)$/); navigate(m && PAGES[m[1]] ? m[1] : 'index.html'); });
+      document.addEventListener('DOMContentLoaded', function () {
+        var m = location.hash.match(/^#go-([\w.]+\.html)$/);
+        var path = location.pathname.replace(/^\/+/, '');
+        var page = m && PAGES[m[1]] ? m[1] : (PAGES[path] ? path : 'index.html');
+        navigate(page);
+      });
     })();
 
   </script>
