@@ -13,12 +13,20 @@ const appPages = new Set([
   'confirmation.html',
   'blog.html'
 ]);
+const noindexPages = new Set([
+  'teaser.html',
+  'passes.html',
+  'summary.html',
+  'payment.html',
+  'confirmation.html'
+]);
 const contentTypes = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
   '.xml': 'application/xml; charset=utf-8',
+  '.txt': 'text/plain; charset=utf-8',
   '.svg': 'image/svg+xml',
   '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg',
@@ -34,8 +42,11 @@ const server = http.createServer((req, res) => {
   }
 
   let pathname;
+  let search;
   try {
-    pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
+    const requestUrl = new URL(req.url, 'http://localhost');
+    pathname = decodeURIComponent(requestUrl.pathname);
+    search = requestUrl.search;
   } catch {
     res.writeHead(400);
     res.end('Bad request');
@@ -48,7 +59,9 @@ const server = http.createServer((req, res) => {
 
   const page = path.posix.basename(pathname);
   if (appPages.has(page) && pathname === `/${page}`) {
-    res.writeHead(302, { Location: `/index.html#go-${page}` });
+    const headers = { Location: `/index.html${search}#go-${page}` };
+    if (noindexPages.has(page)) headers['X-Robots-Tag'] = 'noindex, follow';
+    res.writeHead(302, headers);
     res.end();
     return;
   }
