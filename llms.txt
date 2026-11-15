@@ -1,0 +1,20 @@
+# CampusBuzz
+
+CampusBuzz is a fictional inter-college festival concept and mock event-pass prototype for a digital marketing project. It presents a student-focused, three-day festival at the fictional Neon Valley Institute in Karachi. Festival events, people, venues, prices, and pass availability are simulated; no real tickets are sold, no payments are processed, and demo passes are not valid for entry.
+
+## Website
+
+- [CampusBuzz homepage](https://campusbuzz-kappa.vercel.app/)
+- [Festival teaser](https://campusbuzz-kappa.vercel.app/teaser.html)
+- [Events](https://campusbuzz-kappa.vercel.app/events.html)
+- [Passes](https://campusbuzz-kappa.vercel.app/passes.html)
+- [Blog](https://campusbuzz-kappa.vercel.app/blog.html)
+
+## Event categories
+
+The festival categories are Music, Gaming, Tech, and Art. Events include live music, esports and arcade challenges, hackathons and robotics, startup pitches, and student art.
+
+## Blog stories
+
+- [Atif Aslam Karachi event: Subah Aye Na celebration](https://campusbuzz-kappa.vercel.app/blog/atif-aslam-karachi-event-subah-aye-na/)
+- [Alibaba Cloud AI Hackathon Pakistan 2026](https://campusbuzz-kappa.vercel.app/blog/alibaba-cloud-ai-hackathon-pakistan-2026/)
