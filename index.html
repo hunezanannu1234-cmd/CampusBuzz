@@ -2950,6 +2950,58 @@
     })();
   </script>
   <script>
+    (function () {
+      'use strict';
+      var category = 'Gaming';
+      var articleUrl = 'blog/brainiac-2026-gaming-competition-lahore/index.html';
+
+      function addBlogPost() {
+        var filter = document.getElementById('blog-filter');
+        var grid = document.getElementById('blog-grid');
+        if (!filter || !grid) return;
+
+        var gamingChip = filter.querySelector('.chip[data-cat="Gaming"]');
+        if (!gamingChip) {
+          gamingChip = document.createElement('button');
+          gamingChip.type = 'button';
+          gamingChip.className = 'chip';
+          gamingChip.setAttribute('data-cat', category);
+          gamingChip.setAttribute('aria-pressed', 'false');
+          gamingChip.textContent = category;
+          var techChip = filter.querySelector('.chip[data-cat="Tech"]');
+          filter.insertBefore(gamingChip, techChip ? techChip.nextSibling : null);
+        }
+
+        var selected = filter.querySelector('.chip[aria-pressed="true"]');
+        var activeCategory = selected ? selected.getAttribute('data-cat') : 'All';
+        var post = grid.querySelector('[data-campusbuzz-brainiac-post]');
+        if (activeCategory !== 'All' && activeCategory !== category) {
+          if (post) post.remove();
+          return;
+        }
+        if (post) return;
+
+        post = document.createElement('article');
+        post.className = 'card blog-card';
+        post.setAttribute('data-campusbuzz-brainiac-post', '');
+        post.innerHTML =
+          '<img class="blog-card__img" src="assets/img/brainiac-2026-gaming-competition-lahore.png" alt="Brainiac 2026 gaming competition at UET Lahore featuring Tekken and Asphalt." loading="lazy" width="1365" height="768" style="aspect-ratio:1365 / 768; object-fit:contain; object-position:center">' +
+          '<div class="event__tags" style="margin:1rem 0 .6rem"><span class="badge badge--lime">GAMING</span><span class="badge">UPCOMING</span></div>' +
+          '<h3>Gaming Competition in Lahore 2026: Brainiac at UET Lahore</h3>' +
+          '<p class="muted" style="font-size:.9375rem">Brainiac 2026 brings individual Tekken and Asphalt competitions to UET Lahore on 23 December.</p>' +
+          '<p class="muted" style="font-size:.8125rem">Published 15 Nov 2026</p>' +
+          '<a class="btn btn--sm btn--ghost" href="' + articleUrl + '" data-native-nav>Read the story</a>';
+        grid.appendChild(post);
+      }
+
+      addBlogPost();
+      new MutationObserver(addBlogPost).observe(document.documentElement, {
+        childList: true,
+        subtree: true
+      });
+    })();
+  </script>
+  <script>
 
     (function () {
       'use strict';
